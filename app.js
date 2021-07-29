@@ -25,7 +25,14 @@ app.listen(port, () => {
 })
 
 function print(req, res, next) {
-  const currentTime = new Date().toLocaleString()
-  console.log(currentTime, '|', req.method, 'from', req.originalUrl)
+  const startTime = new Date()
+  const currentTime = startTime.toLocaleString()
+  console.log('Start:', currentTime, '|', req.method, 'from', req.originalUrl)
+  res.on('finish', () => {
+    const endTime = new Date()
+    const finishTime = endTime.toLocaleString()
+    console.log('Finish:', finishTime, '|', req.method, 'from', req.originalUrl)
+    console.log('total time:', endTime - startTime, 'ms')
+  })
   next()
 }
