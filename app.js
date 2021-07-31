@@ -1,4 +1,5 @@
 const express = require('express')
+const moment = require('moment')
 const app = express()
 const port = 3000
 
@@ -26,13 +27,12 @@ app.listen(port, () => {
 
 function print(req, res, next) {
   const startTime = new Date()
-  const currentTime = startTime.toLocaleString()
-  console.log('Start:', currentTime, '|', req.method, 'from', req.originalUrl)
+  const currentTime = moment(startTime).format('YYYY-MM-DD HH:mm:ss')
+  console.log(currentTime, '|', req.method, 'from', req.originalUrl)
   res.on('finish', () => {
     const endTime = new Date()
-    const finishTime = endTime.toLocaleString()
-    console.log('Finish:', finishTime, '|', req.method, 'from', req.originalUrl)
-    console.log('total time:', endTime - startTime, 'ms')
+    const finishTime = moment(endTime).format('YYYY-MM-DD HH:mm:ss')
+    console.log(finishTime, '|', req.method, 'from', req.originalUrl, '| total time:', endTime - startTime, 'ms')
   })
   next()
 }
