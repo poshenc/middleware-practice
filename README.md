@@ -3,9 +3,11 @@ Middleware:
 
 Features:
 伺服器接到任一請求時，server log 上能正確印出：
-start: time-stamps | 請求的 HTTP 方法 from URL
-finish: time-stamps | 請求的 HTTP 方法 from URL
-total time: request-response cycle timing
+請求時間戳記 (time-stamps) - 以當地時間 (台北) 顯示
+請求的 HTTP 方法
+URL
+請求到回覆所花費的時間
+
 
 Installation:
 1.打開終端機 (Terminal) 輸入以下訊息，下載專案至本機 git clone https://github.com/poshenc/middleware-practice.git
