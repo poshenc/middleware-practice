@@ -32,7 +32,9 @@ function print(req, res, next) {
   res.on('finish', () => {
     const endTime = new Date()
     const finishTime = moment(endTime).format('YYYY-MM-DD HH:mm:ss')
-    console.log(finishTime, '|', req.method, 'from', req.originalUrl, '| total time:', endTime - startTime, 'ms')
+    const timeSpent = moment(endTime).diff(startTime, 'milliseconds', true)
+    console.log(finishTime, '|', req.method, 'from', req.originalUrl, '| total time:', timeSpent, 'ms')
+    console.log(typeof (endTime))
   })
   next()
 }
