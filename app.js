@@ -34,7 +34,6 @@ function print(req, res, next) {
     const finishTime = moment(endTime).format('YYYY-MM-DD HH:mm:ss')
     const timeSpent = moment(endTime).diff(startTime, 'milliseconds', true)
     console.log(finishTime, '|', req.method, 'from', req.originalUrl, '| total time:', timeSpent, 'ms')
-    console.log(typeof (endTime))
   })
   next()
 }
